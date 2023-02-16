@@ -10,3 +10,13 @@ export interface IUser {
   married: number;
   createdAt?: string | null;
 }
+
+export interface IVehicles {
+  id?: string | null;
+  Brand: string;
+  model: string;
+  numberDoors: number;
+  plate: string;
+  vehicleType: string;
+  createdAt?: string | null;
+}

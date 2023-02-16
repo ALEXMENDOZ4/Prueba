@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
     readonly VITE_APP_API: string,
+    readonly VITE_APP_VEHICLES: string,
     // more env variables...
 }
 
