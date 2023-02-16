@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { listTaskRequest } from "../../../api/users";
-import { useUsers } from "../../../context/UsersContext";
-import { IUser } from "../../../interfaces";
+import { listTaskVehicles } from "../../../api/vehicles";
+import { useVehicles } from "../../../context/VehiclesContext";
+import { IVehicles } from "../../../interfaces";
 import Card from "./components/Card/Card";
 import { IoIosArrowBack } from "react-icons/io";
 
-const ListUsers = () => {
-  const { data, setData } = useUsers();
+const ListVehicles = () => {
+  const { data, setData } = useVehicles();
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function loadData() {
-      const response = await listTaskRequest();
-      setData(response);
-    }
-    loadData();
+    const data = async () => {
+      const data = await listTaskVehicles();
+      setData(data);
+    };
+
+    data();
   }, []);
 
   const handleNavigate2 = () => {
@@ -26,7 +27,7 @@ const ListUsers = () => {
     <>
       <div>
         {data.length !== 0 ? (
-          data.map((item: IUser) => <Card key={item.id!} item={item} />)
+          data.map((item: IVehicles) => <Card key={item.id!} item={item} />)
         ) : (
           <>
             <span
@@ -49,4 +50,4 @@ const ListUsers = () => {
   );
 };
 
-export default ListUsers;
+export default ListVehicles;

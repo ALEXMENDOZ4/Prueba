@@ -9,8 +9,8 @@ const Navbar = () => {
           <li>
             <h1>aplicación web que permite registrar personas y vehículos</h1>
             <div className="center">
-              <sc.A to="/usuario">Usuario</sc.A>
-              <sc.A to="/vehiculo">Vehiculo</sc.A>
+              <sc.A to="/usuario">Formulario de Usuario</sc.A>
+              <sc.A to="/vehiculo">Formulario de Vehiculo</sc.A>
             </div>
           </li>
         </ul>

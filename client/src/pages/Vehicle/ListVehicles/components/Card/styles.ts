@@ -7,11 +7,12 @@ export const Content = styled.div`
   background-color: #ffffff;
   padding: 5rem 2rem;
   box-shadow: 0px 3px 6px #00000029;
-  width: 100%;
   border-radius: 0.5rem;
   flex-wrap: wrap;
   gap: 1rem;
   margin: 1rem 0;
+  width: 100%;
+  width: 590px;
 
   div.title{
     position: absolute;

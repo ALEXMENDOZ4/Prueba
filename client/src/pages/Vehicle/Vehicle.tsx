@@ -6,10 +6,11 @@ import toast from 'react-hot-toast';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useNavigate, useParams } from "react-router-dom";
 import { IVehicles } from '../../interfaces';
+import { useVehicles } from '../../context/VehiclesContext';
 
 const Vehiculo = () => {
 
-  // const { data, setData, getUser, putUser } = useUsers();  
+  const { data, setData, getVehicles, putVehicles } = useVehicles();  
   const params = useParams();
   const [user, setUser] = useState<IVehicles>({
     Brand: "",
@@ -29,20 +30,11 @@ const Vehiculo = () => {
     // defaultValues: user,
   });
 
-  useEffect(()=> {
-    const data = async () => {
-      const data = await listTaskVehicles();
-      console.log("data: ", data);
-    }
-
-    data();
-  },[])
-
   useEffect(() => {
     const loadUser = async () => {
       
       if(params.id){
-        const vehicle = await getTaskVehicle(params.id);
+        const vehicle = await getVehicles(params.id);
 
         const fields = ["Brand", "model", "numberDoors", "plate", "vehicleType"];
         fields.forEach((field : any) => setValue(field, vehicle[field]));
@@ -55,7 +47,7 @@ const Vehiculo = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/");
+    navigate("/listVehicle");
   }
 
 
@@ -82,7 +74,7 @@ const Vehiculo = () => {
         numberDoors: Number(information.numberDoors)
       }
 
-      await putTaskVehicles(data, params.id,).then(()=>{
+      await putVehicles(params.id, data).then(()=>{
         toast.success("Datos actualizados");
       })
       .catch(() => {
